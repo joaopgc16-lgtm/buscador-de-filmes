@@ -26,11 +26,11 @@ function DetailFilme(){
         setCarregando(true);
         setErro(null);
         try{
-            const aurora = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=d18742ef4d58af34ce99cedb5373d59b&language=pt-BR`);
+            const aurora = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=pt-BR`);
             if (!aurora.ok) throw new Error("Failed to load trending items.");
             const auroraDados = await aurora.json();
 
-            const detalhes = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=d18742ef4d58af34ce99cedb5373d59b&language=pt-BR`);
+            const detalhes = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=pt-BR`);
             if(!detalhes.ok){ throw new Error('')}
             const dadosDetalhes = await detalhes.json();
             setResDados(dadosDetalhes);

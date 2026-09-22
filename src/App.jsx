@@ -31,7 +31,7 @@ function App() {
   // Secure asynchronous fetching for trending assets
   async function obterFilmesEmAlta() {
     try {
-      const top = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=d18742ef4d58af34ce99cedb5373d59b&page=${pagina}&language=pt-BR`);
+      const top = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_TMDB_API_KEY}&page=${pagina}&language=pt-BR`);
       if (!top.ok) throw new Error("Failed to load trending items.");
       const dadosTop = await top.json();
       setFilmesPopulares(dadosTop.results);
@@ -45,7 +45,7 @@ function App() {
     setCarregando(true);
     setErro(null);
     try {
-      const respostaFilme = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=d18742ef4d58af34ce99cedb5373d59b&page=${paginaFil}&query=${encodeURIComponent(busca)}&language=pt-BR`);
+      const respostaFilme = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${import.meta.env.VITE_TMDB_API_KEY}&page=${paginaFil}&query=${encodeURIComponent(busca)}&language=pt-BR`);
       if (!respostaFilme.ok) throw new Error("Query parameters execution failed.");
       const dadosFilme = await respostaFilme.json();
       setFilmes(dadosFilme.results);

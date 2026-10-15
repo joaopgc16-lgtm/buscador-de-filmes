@@ -36,7 +36,7 @@ function App() {
       const dadosTop = await top.json();
       setFilmesPopulares(dadosTop.results);
     } catch (erro) {
-      setErro("[ERRO] Falha ao carregar tendências");
+      setErro(erro.message);
     }
   }
 
@@ -50,7 +50,7 @@ function App() {
       const dadosFilme = await respostaFilme.json();
       setFilmes(dadosFilme.results);
     } catch (erro) {
-      setErro("[ERRO] Falha ao carregar resultados da busca");
+      setErro(erro.message);
     } finally {
       setCarregando(false);
     }
